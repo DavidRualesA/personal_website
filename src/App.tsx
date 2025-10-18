@@ -1,8 +1,11 @@
+import Navigation from './components/Navigation.tsx'
+
 function App() {
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <h1 className="text-4xl font-bold text-blue-600">Hello Tailwind</h1>
+      <Navigation />
+      <div className="flex items-center justify-center min-h-screen bg-black">
+        <h1 className="text-4xl font-bold text-blue-400">DAVID RUALES</h1>
       </div> 
     </>
   )
