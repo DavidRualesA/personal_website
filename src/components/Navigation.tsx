@@ -32,7 +32,7 @@ const Navigation: React.FC = () => {
 
                     {/* Logo/Name - Left side */}
                     <div className="flex-shrink-0">
-                        <a href="#" className="font-bold tracking-tight hover:text-gray-300 transition-colors duration-300"> DAVID RUALES </a>
+                        <a href="#" className="text-2xl font-bold tracking-tight hover:text-gray-300 transition-colors duration-300"> DR </a>
                     </div>
 
                     {/* Desktop Menu - Right Side (hidden on mobile) */}
@@ -41,7 +41,7 @@ const Navigation: React.FC = () => {
                         <a
                             key={item.name}
                             href={item.href}
-                            className="text-sm font-medium uppercase tracking-wider hover:text-gray-300 transition-colors duration-300"
+                            className="text-base font-semibold uppercase tracking-wider hover:text-gray-300 transition-colors duration-300"
                         >
                             {item.name}
                         </a>
@@ -86,10 +86,10 @@ const Navigation: React.FC = () => {
                         key={item.name}
                         href={item.href}
                         onClick={handleLinkClick}
-                        className="block px-3 py-2 text-base font-medium uppercase -tracking-wider hover:bg-gray-900 transition-colors duration-300"
+                        className="block px-3 py-2 text-lg font-semibold uppercase tracking-wider hover:bg-gray-900 transition-colors duration-300"
                      >
                         {item.name}
-                    </a>   
+                    </a>
                     ))}
                 </div>
             </div>
