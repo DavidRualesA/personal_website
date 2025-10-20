@@ -105,7 +105,7 @@ const About: React.FC = () => {
                         </div>
                     </div>
 
-                    <div className="bg-gray-50 rounded-2xl p-8 space-y-4">
+                    <div className="bg-white rounded-2xl p-8 space-y-4">
                         <h3 className="text-4xl font-bold text-gray-900 mb-4">The Impact</h3>
                         <ul className="space-y-3 text-gray-700">
                             <li className="flex items-start">
