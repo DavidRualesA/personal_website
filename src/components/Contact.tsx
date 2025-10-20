@@ -1,4 +1,5 @@
 import React from 'react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 interface ContactMethod {
     label: string;
@@ -8,6 +9,7 @@ interface ContactMethod {
 }
 
 const Contact: React.FC = () => {
+    const { elementRef: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
     const contactMethods: ContactMethod[] = [
         {
             label: "Email",
@@ -45,15 +47,21 @@ const Contact: React.FC = () => {
     return (
         <section id="contact" className="relative bg-white py-12 md:py-16">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 text-center">
-                    Get in Touch
-                </h2>
-                <p className="text-2xl text-gray-600 mb-20 text-center">
-                    Let's build something that matters
-                </p>
+                <div
+                    ref={sectionRef as React.RefObject<HTMLDivElement>}
+                    className={`transition-all duration-1000 ${
+                        sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                    }`}
+                >
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 text-center">
+                        Get in Touch
+                    </h2>
+                    <p className="text-2xl text-gray-600 mb-20 text-center">
+                        Let's build something that matters
+                    </p>
 
-                {/* Contact Methods */}
-                <div className="grid md:grid-cols-3 gap-8 mb-16">
+                    {/* Contact Methods */}
+                    <div className="grid md:grid-cols-3 gap-8 mb-16">
                     {contactMethods.map((method, index) => (
                         <a
                             key={index}
@@ -75,17 +83,18 @@ const Contact: React.FC = () => {
                     ))}
                 </div>
 
-                {/* CTA */}
-                <div className="text-center">
-                    <p className="text-2xl text-gray-900 font-semibold mb-6">
-                        Interested in working together?
-                    </p>
-                    <a
-                        href="mailto:davidruales93@gmail.com"
-                        className="inline-block bg-gray-900 text-white font-semibold px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-lg"
-                    >
-                        Send me an email
-                    </a>
+                    {/* CTA */}
+                    <div className="text-center">
+                        <p className="text-2xl text-gray-900 font-semibold mb-6">
+                            Interested in working together?
+                        </p>
+                        <a
+                            href="mailto:davidruales93@gmail.com"
+                            className="inline-block bg-gray-900 text-white font-semibold px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors duration-300 text-lg"
+                        >
+                            Send me an email
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>

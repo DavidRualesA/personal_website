@@ -1,5 +1,6 @@
 import React from 'react';
 import cvFile from '../assets/CV David Ruales latest.pdf';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 interface ExperienceItem {
     year: string;
@@ -11,6 +12,7 @@ interface ExperienceItem {
 }
 
 const Experience: React.FC = () => {
+    const { elementRef: headerRef, isVisible: headerVisible } = useScrollAnimation();
     const experiences: ExperienceItem[] = [
         {
             year: "2015",
@@ -73,15 +75,21 @@ const Experience: React.FC = () => {
     return (
         <section id="experience" className="relative bg-gray-50 py-12 md:py-16">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 text-center">
-                    Experience
-                </h2>
-                <p className="text-2xl text-gray-600 mb-8 text-center">
-                    10+ years building intelligent systems
-                </p>
+                <div
+                    ref={headerRef as React.RefObject<HTMLDivElement>}
+                    className={`transition-all duration-1000 ${
+                        headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                    }`}
+                >
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 text-center">
+                        Experience
+                    </h2>
+                    <p className="text-2xl text-gray-600 mb-8 text-center">
+                        10+ years building intelligent systems
+                    </p>
 
-                {/* Download CV Button */}
-                <div className="flex justify-center mb-20">
+                    {/* Download CV Button */}
+                    <div className="flex justify-center mb-20">
                     <a
                         href={cvFile}
                         download="David_Ruales_CV.pdf"
@@ -92,6 +100,7 @@ const Experience: React.FC = () => {
                         </svg>
                         Download CV
                     </a>
+                    </div>
                 </div>
 
                 {/* Timeline */}

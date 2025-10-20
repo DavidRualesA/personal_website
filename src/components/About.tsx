@@ -2,14 +2,24 @@ import React from 'react';
 import davidFamily from '../assets/davidFamily.jpg';
 import haloV0 from '../assets/halov.0.jpeg';
 import haloVF from '../assets/halov.f.jpeg';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const About: React.FC = () => {
+    const { elementRef: section1Ref, isVisible: section1Visible } = useScrollAnimation();
+    const { elementRef: section2Ref, isVisible: section2Visible } = useScrollAnimation();
+    const { elementRef: section3Ref, isVisible: section3Visible } = useScrollAnimation();
+
     return (
         <section id="about" className="relative bg-white py-12 md:py-16">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Personal Story Section */}
-                <div className="mb-20">
+                <div
+                    ref={section1Ref as React.RefObject<HTMLDivElement>}
+                    className={`mb-20 transition-all duration-1000 ${
+                        section1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                    }`}
+                >
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8">
                         Moving Countries
                     </h2>
@@ -46,7 +56,12 @@ const About: React.FC = () => {
                 </div>
 
                 {/* Profesional Profile */}
-                <div className="mb-20 py-16 bg-gradient-to-r from-blue-50 to-purple-50 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-16 lg:px-16 rounded-3xl">
+                <div
+                    ref={section2Ref as React.RefObject<HTMLDivElement>}
+                    className={`mb-20 py-16 bg-gradient-to-r from-blue-50 to-purple-50 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-16 lg:px-16 rounded-3xl transition-all duration-1000 ${
+                        section2Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                    }`}
+                >
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8">
                         Who am I?
                     </h2>
@@ -65,7 +80,12 @@ const About: React.FC = () => {
                 </div>
 
                 {/* Halo Education - Proudest Work */}
-                <div className="mb-20">
+                <div
+                    ref={section3Ref as React.RefObject<HTMLDivElement>}
+                    className={`mb-20 transition-all duration-1000 ${
+                        section3Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                    }`}
+                >
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
                         Building for Future Generations
                     </h2>

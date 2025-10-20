@@ -1,4 +1,5 @@
 import React from 'react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 interface SkillCategory {
     title: string;
@@ -6,6 +7,7 @@ interface SkillCategory {
 }
 
 const Skills: React.FC = () => {
+    const { elementRef: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
     const skillCategories: SkillCategory[] = [
         {
             title: "Languages & Core",
@@ -36,15 +38,21 @@ const Skills: React.FC = () => {
     return (
         <section id="skills" className="relative bg-white py-12 md:py-16">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 text-center">
-                    Skills
-                </h2>
-                <p className="text-2xl text-gray-600 mb-20 text-center">
-                    Technical expertise across the full stack
-                </p>
+                <div
+                    ref={sectionRef as React.RefObject<HTMLDivElement>}
+                    className={`transition-all duration-1000 ${
+                        sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                    }`}
+                >
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 text-center">
+                        Skills
+                    </h2>
+                    <p className="text-2xl text-gray-600 mb-20 text-center">
+                        Technical expertise across the full stack
+                    </p>
 
-                {/* Skills Grid */}
-                <div className="grid md:grid-cols-2 gap-12">
+                    {/* Skills Grid */}
+                    <div className="grid md:grid-cols-2 gap-12">
                     {skillCategories.map((category, index) => (
                         <div key={index} className="space-y-4">
                             <h3 className="text-2xl font-bold text-gray-900">
@@ -62,6 +70,7 @@ const Skills: React.FC = () => {
                             </div>
                         </div>
                     ))}
+                    </div>
                 </div>
             </div>
         </section>
