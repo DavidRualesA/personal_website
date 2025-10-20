@@ -5,7 +5,7 @@ import haloVF from '../assets/halov.f.jpeg';
 
 const About: React.FC = () => {
     return (
-        <section id="about" className="relative bg-white py-20 md:py-32">
+        <section id="about" className="relative bg-white py-12 md:py-16">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Personal Story Section */}
