@@ -1,103 +1,95 @@
 import React from 'react';
 
 interface ExperienceItem {
+    year: string;
     company: string;
     role: string;
-    period: string;
-    location: string;
+    description: string;
 }
 
 const Experience: React.FC = () => {
     const experiences: ExperienceItem[] = [
         {
-            company: "Dataclysm",
-            role: "Lead ML & Data Scientist",
-            period: "Dec 2024 - Present",
-            location: "Perth, Australia"
-        },
-        {
-            company: "Lynch Group",
-            role: "Senior Data & Operations Analyst",
-            period: "Mar 2023 - Apr 2025",
-            location: "Perth, Australia"
-        },
-        {
-            company: "Lynch Group",
-            role: "Data Analyst & Process Optimization Specialist",
-            period: "Apr 2020 - Feb 2023",
-            location: "Perth, Australia"
-        },
-        {
-            company: "Beaumonde on the Point",
-            role: "Supply Chain & Logistics Data Analyst",
-            period: "Jun 2018 - Mar 2020",
-            location: "Perth, Australia"
-        },
-        {
-            company: "Tecnoquimicas S.A.",
-            role: "Process & Data Engineer",
-            period: "Oct 2017 - Jan 2018",
-            location: "Cali, Colombia"
-        },
-        {
-            company: "Constructora Melendez S.A.",
-            role: "Project & Data Analyst",
-            period: "Feb 2016 - Oct 2017",
-            location: "Cali, Colombia"
-        },
-        {
+            year: "2015",
             company: "Abbott Laboratories",
             role: "Engineer Intern",
-            period: "May 2015 - Nov 2015",
-            location: "Cali, Colombia"
+            description: "Started my journey in engineering and process optimization at a global healthcare company."
+        },
+        {
+            year: "2016",
+            company: "Constructora Melendez S.A.",
+            role: "Project & Data Analyst",
+            description: "Applied data analysis to construction projects, improving decision-making and resource planning."
+        },
+        {
+            year: "2017",
+            company: "Tecnoquimicas S.A.",
+            role: "Process & Data Engineer",
+            description: "Engineered data-driven process improvements in pharmaceutical manufacturing."
+        },
+        {
+            year: "2018",
+            company: "Beaumonde on the Point",
+            role: "Supply Chain & Logistics Data Analyst",
+            description: "Optimized supply chain operations through data analysis and logistics improvements."
+        },
+        {
+            year: "2020",
+            company: "Lynch Group",
+            role: "Data Analyst & Process Optimization Specialist",
+            description: "Achieved 33% cost reduction through ML predictive models and Power BI dashboards."
+        },
+        {
+            year: "2023",
+            company: "Lynch Group",
+            role: "Senior Data & Operations Analyst",
+            description: "Deployed ML models that increased profitability by 15% and reduced transport costs by 12%."
+        },
+        {
+            year: "2024",
+            company: "Dataclysm",
+            role: "Lead ML & Data Scientist",
+            description: "Building AI-powered analytics for Australian schools. Developed ML models for student risk detection and AI assistants that reduced response times by 99.9%."
         }
     ];
 
     return (
-        <section id="experience" className="relative bg-gradient-to-b from-gray-50 to-white py-20 md:py-32">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+        <section id="experience" className="relative bg-white py-20 md:py-32">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 text-center">
                     Experience
                 </h2>
-                <p className="text-2xl text-gray-600 mb-16">
-                    9+ years of experience
+                <p className="text-xl text-gray-600 mb-20 text-center">
+                    10+ years building intelligent systems
                 </p>
 
                 {/* Timeline */}
                 <div className="relative">
-                    {/* Vertical line */}
-                    <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-blue-600 via-purple-600 to-blue-400"></div>
+                    {/* Central vertical line */}
+                    <div className="absolute left-16 md:left-1/2 transform md:-translate-x-1/2 w-1 h-full bg-gray-300"></div>
 
                     {experiences.map((exp, index) => (
-                        <div key={index} className="relative mb-8 md:mb-12">
-                            <div className={`flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                                {/* Timeline dot */}
-                                <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10"></div>
+                        <div key={index} className="relative mb-16 md:mb-20">
+                            {/* Year marker - centered on timeline */}
+                            <div className="absolute left-16 md:left-1/2 transform -translate-x-1/2 z-10">
+                                <div className="bg-gray-900 text-white font-bold px-4 py-2 rounded-lg shadow-lg text-2xl">
+                                    {exp.year}
+                                </div>
+                            </div>
 
-                                {/* Content card */}
-                                <div className={`ml-20 md:ml-0 md:w-5/12 ${index % 2 === 0 ? '' : 'md:text-right'}`}>
-                                    <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border-l-4 border-blue-600">
-                                        <h3 className="text-xl font-bold text-gray-900 mb-2">
+                            {/* Content - alternating sides on desktop */}
+                            <div className={`flex ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'}`}>
+                                <div className={`ml-32 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:pr-16' : 'md:pl-16'}`}>
+                                    <div className="space-y-2">
+                                        <h3 className="text-2xl font-bold text-gray-900">
                                             {exp.role}
                                         </h3>
-                                        <p className="text-lg font-semibold text-blue-600 mb-3">
+                                        <p className="text-xl font-semibold text-blue-600">
                                             {exp.company}
                                         </p>
-                                        <div className="flex flex-col gap-1 text-sm text-gray-600">
-                                            <span className="flex items-center">
-                                                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                                </svg>
-                                                {exp.period}
-                                            </span>
-                                            <span className="flex items-center">
-                                                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                                </svg>
-                                                {exp.location}
-                                            </span>
-                                        </div>
+                                        <p className="text-lg text-gray-600 leading-relaxed mt-3">
+                                            {exp.description}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
