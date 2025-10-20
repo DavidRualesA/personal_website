@@ -5,6 +5,8 @@ interface ExperienceItem {
     company: string;
     role: string;
     description: string;
+    website: string;
+    logoUrl: string;
 }
 
 const Experience: React.FC = () => {
@@ -13,43 +15,57 @@ const Experience: React.FC = () => {
             year: "2015",
             company: "Abbott Laboratories",
             role: "Engineer Intern",
-            description: "Started my journey in engineering and process optimization at a global healthcare company."
+            description: "Started my journey in engineering and process optimization at a global healthcare company.",
+            website: "https://www.aus.abbott/",
+            logoUrl: "https://logo.clearbit.com/abbott.com"
         },
         {
             year: "2016",
             company: "Constructora Melendez S.A.",
             role: "Project & Data Analyst",
-            description: "Applied data analysis to construction projects, improving decision-making and resource planning."
+            description: "Applied data analysis to construction projects, improving decision-making and resource planning.",
+            website: "https://constructoramelendez.com/",
+            logoUrl: "https://logo.clearbit.com/constructoramelendez.com"
         },
         {
             year: "2017",
             company: "Tecnoquimicas S.A.",
             role: "Process & Data Engineer",
-            description: "Engineered data-driven process improvements in pharmaceutical manufacturing."
+            description: "Engineered data-driven process improvements in pharmaceutical manufacturing.",
+            website: "https://www.tqconfiable.com/",
+            logoUrl: "https://logo.clearbit.com/tqconfiable.com"
         },
         {
             year: "2018",
             company: "Beaumonde on the Point",
             role: "Supply Chain & Logistics Data Analyst",
-            description: "Optimized supply chain operations through data analysis and logistics improvements."
+            description: "Optimized supply chain operations through data analysis and logistics improvements.",
+            website: "https://www.beaumondeotp.com.au/",
+            logoUrl: "https://logo.clearbit.com/beaumondeotp.com.au"
         },
         {
             year: "2020",
             company: "Lynch Group",
             role: "Data Analyst & Process Optimization Specialist",
-            description: "Achieved 33% cost reduction through ML predictive models and Power BI dashboards."
+            description: "Achieved 33% cost reduction through ML predictive models and Power BI dashboards.",
+            website: "https://www.lynchgroup.com.au/",
+            logoUrl: "https://logo.clearbit.com/lynchgroup.com.au"
         },
         {
             year: "2023",
             company: "Lynch Group",
             role: "Senior Data & Operations Analyst",
-            description: "Deployed ML models that increased profitability by 15% and reduced transport costs by 12%."
+            description: "Deployed ML models that increased profitability by 15% and reduced transport costs by 12%.",
+            website: "https://www.lynchgroup.com.au/",
+            logoUrl: "https://logo.clearbit.com/lynchgroup.com.au"
         },
         {
             year: "2024",
             company: "Dataclysm",
             role: "Lead ML & Data Scientist",
-            description: "Building AI-powered analytics for Australian schools. Developed ML models for student risk detection and AI assistants that reduced response times by 99.9%."
+            description: "Building AI-powered analytics for Australian schools. Developed ML models for student risk detection and AI assistants that reduced response times by 99.9%.",
+            website: "https://dataclysm.com.au/",
+            logoUrl: "https://logo.clearbit.com/dataclysm.com.au"
         }
     ];
 
@@ -77,20 +93,89 @@ const Experience: React.FC = () => {
                                 </div>
                             </div>
 
-                            {/* Content - alternating sides on desktop */}
-                            <div className={`flex ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'}`}>
-                                <div className={`ml-32 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:pr-16' : 'md:pl-16'}`}>
-                                    <div className="space-y-2">
-                                        <h3 className="text-2xl font-bold text-gray-900">
-                                            {exp.role}
-                                        </h3>
-                                        <p className="text-xl font-semibold text-blue-600">
-                                            {exp.company}
-                                        </p>
-                                        <p className="text-lg text-gray-600 leading-relaxed mt-3">
-                                            {exp.description}
-                                        </p>
+                            {/* Content with logo on opposite side */}
+                            <div className="hidden md:grid md:grid-cols-2 md:gap-8 items-center">
+                                {/* Left side */}
+                                {index % 2 === 0 ? (
+                                    // Description on left
+                                    <div className="text-center pr-16">
+                                        <div className="space-y-2">
+                                            <h3 className="text-2xl font-bold text-gray-900">
+                                                {exp.role}
+                                            </h3>
+                                            <p className="text-xl font-semibold text-blue-600">
+                                                {exp.company}
+                                            </p>
+                                            <p className="text-lg text-gray-600 leading-relaxed mt-3">
+                                                {exp.description}
+                                            </p>
+                                        </div>
                                     </div>
+                                ) : (
+                                    // Logo on left
+                                    <div className="flex justify-center pr-16">
+                                        <a
+                                            href={exp.website}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="block w-48 h-48 transition-all duration-300 hover:opacity-80"
+                                        >
+                                            <img
+                                                src={exp.logoUrl}
+                                                alt={`${exp.company} logo`}
+                                                className="w-full h-full object-contain"
+                                            />
+                                        </a>
+                                    </div>
+                                )}
+
+                                {/* Right side */}
+                                {index % 2 === 0 ? (
+                                    // Logo on right
+                                    <div className="flex justify-center pl-16">
+                                        <a
+                                            href={exp.website}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="block w-48 h-48 transition-all duration-300 hover:opacity-80"
+                                        >
+                                            <img
+                                                src={exp.logoUrl}
+                                                alt={`${exp.company} logo`}
+                                                className="w-full h-full object-contain"
+                                            />
+                                        </a>
+                                    </div>
+                                ) : (
+                                    // Description on right
+                                    <div className="text-center pl-16">
+                                        <div className="space-y-2">
+                                            <h3 className="text-2xl font-bold text-gray-900">
+                                                {exp.role}
+                                            </h3>
+                                            <p className="text-xl font-semibold text-blue-600">
+                                                {exp.company}
+                                            </p>
+                                            <p className="text-lg text-gray-600 leading-relaxed mt-3">
+                                                {exp.description}
+                                            </p>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Mobile view - description only */}
+                            <div className="md:hidden ml-32">
+                                <div className="space-y-2">
+                                    <h3 className="text-2xl font-bold text-gray-900">
+                                        {exp.role}
+                                    </h3>
+                                    <p className="text-xl font-semibold text-blue-600">
+                                        {exp.company}
+                                    </p>
+                                    <p className="text-lg text-gray-600 leading-relaxed mt-3">
+                                        {exp.description}
+                                    </p>
                                 </div>
                             </div>
                         </div>
