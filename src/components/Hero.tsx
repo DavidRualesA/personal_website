@@ -1,18 +1,21 @@
 import React from 'react';
-import davidSeating from '../assets/davidSeating.jpeg';
+import davidHero from '../assets/davidHero.jpg';
 
 const Hero: React.FC = () => {
     return (
         <div
-            className="flex items-center justify-center min-h-screen"
+            className="relative flex items-center w-full justify-center min-h-screen bg-no-repeat bg-cover"
             style={{
-                backgroundImage: `url(${davidSeating})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat'
+                backgroundImage: `url(${davidHero})`,
+                backgroundPosition: 'center 30%',
             }}
         >
-            <h1 className="text-4xl font-bold text-cyan-500">DAVID RUALES</h1>
+            <div className='relative z-10 text-center mt-64 md:mt-72'>
+                <h1 className="text-5xl sm:text-4xl md:text-6xl lg:text-8xl xl:text-10xl font-bold text-white mb-4 drop-shadow-lg">
+                DAVID RUALES
+                </h1>
+            </div>
+
         </div>
     );
 };
