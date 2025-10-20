@@ -1,4 +1,5 @@
 import React from 'react';
+import cvFile from '../assets/CV David Ruales latest.pdf';
 
 interface ExperienceItem {
     year: string;
@@ -75,9 +76,23 @@ const Experience: React.FC = () => {
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 text-center">
                     Experience
                 </h2>
-                <p className="text-xl text-gray-600 mb-20 text-center">
+                <p className="text-xl text-gray-600 mb-8 text-center">
                     10+ years building intelligent systems
                 </p>
+
+                {/* Download CV Button */}
+                <div className="flex justify-center mb-20">
+                    <a
+                        href={cvFile}
+                        download="David_Ruales_CV.pdf"
+                        className="inline-flex items-center gap-2 bg-gray-900 text-white font-semibold px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors duration-300"
+                    >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Download CV
+                    </a>
+                </div>
 
                 {/* Timeline */}
                 <div className="relative">
