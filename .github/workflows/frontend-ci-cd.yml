@@ -1,0 +1,107 @@
+name: Frontend CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  NODE_VERSION: '22'
+
+jobs:
+
+  # Security scanning
+  security:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run npm audit
+      run: npm audit --audit-level=moderate --json > npm-audit.json || true
+      continue-on-error: true
+
+    - name: Upload security scan results
+      uses: actions/upload-artifact@v4
+      with:
+        name: npm-audit-results
+        path: npm-audit.json
+
+  # Build and deployment job for production
+  deploy-production:
+    if: github.ref == 'refs/heads/main'
+    needs: [security]
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        cache-dependency-path: package-lock.json
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build for production
+      run: npm run build
+
+    - name: Deploy to Azure Static Web Apps (Production)
+      uses: Azure/static-web-apps-deploy@v1
+      with:
+        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PROD }}
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        action: "upload"
+        app_location: "/"
+        output_location: "dist"
+
+  # Performance testing
+  performance:
+    if: github.ref == 'refs/heads/main'
+    needs: [deploy-production]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        cache-dependency-path: package-lock.json
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build for Lighthouse testing
+      run: npm run build
+
+    - name: Install Lighthouse CI
+      run: npm install -g @lhci/cli@0.12.x
+
+  # Notification job
+  notify:
+    if: always()
+    needs: [security, deploy-production, performance]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Notify deployment status
+      run: |
+        echo "Deployment pipeline completed"
+        echo "Security scan: ${{ needs.security.result }}"
+        echo "Production deployment: ${{ needs.deploy-production.result }}"
+        echo "Performance test: ${{ needs.performance.result }}"
