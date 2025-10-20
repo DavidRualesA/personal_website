@@ -1,5 +1,5 @@
 import React from 'react';
-import cvFile from '../assets/CV David Ruales latest.pdf';
+import cvFile from '../assets/CV David Ruales.pdf';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 interface ExperienceItem {

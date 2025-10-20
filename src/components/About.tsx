@@ -68,8 +68,8 @@ const About: React.FC = () => {
                     <div className="max-w-4xl space-y-6 text-lg text-gray-700 leading-relaxed text-justify">
                         <p className='text-2xl'> 
                             I'm David Ruales, an engineer passionate about turning ideas into intelligent systems. 
-                            I've got about nine years of experience across industries, I've blended my background in engineering, data science, and AI/ML to design solutions.
-                            What drives me is purpose, building tools or systems that help people make better decisions
+                            I've got about ten years of experience across industries, I've blended my background in engineering, data science, and AI/ML to design solutions.
+                            What drives me is purpose, building tools or systems that help people make better decisions.
                             Today, I focus on creating meaningful, scalable AI systems that merge innovation with impact.
                             I've seen how the right mix of data, technology, and human insight can create real change. 
                             Whether I'm coding an agent that interprets natural language, designing a Machine Learnign model, or Analysing data, 
