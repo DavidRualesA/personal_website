@@ -13,6 +13,7 @@ interface ExperienceItem {
 
 const Experience: React.FC = () => {
     const { elementRef: headerRef, isVisible: headerVisible } = useScrollAnimation();
+    const { elementRef: timelineRef, isVisible: timelineVisible } = useScrollAnimation();
     const experiences: ExperienceItem[] = [
         {
             year: "2015",
@@ -104,9 +105,14 @@ const Experience: React.FC = () => {
                 </div>
 
                 {/* Timeline */}
-                <div className="relative">
+                <div ref={timelineRef as React.RefObject<HTMLDivElement>} className="relative">
                     {/* Central vertical line */}
-                    <div className="absolute left-16 md:left-1/2 transform md:-translate-x-1/2 w-1 h-full bg-gray-300"></div>
+                    <div
+                        className={`absolute left-16 md:left-1/2 transform md:-translate-x-1/2 w-1 h-full bg-gray-300 origin-top transition-all ${
+                            timelineVisible ? 'scale-y-100' : 'scale-y-0'
+                        }`}
+                        style={{ transitionDuration: '5000ms' }}
+                    ></div>
 
                     {experiences.map((exp, index) => (
                         <div key={index} className="relative mb-16 md:mb-20">
