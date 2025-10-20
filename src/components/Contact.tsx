@@ -48,7 +48,7 @@ const Contact: React.FC = () => {
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 text-center">
                     Get in Touch
                 </h2>
-                <p className="text-xl text-gray-600 mb-20 text-center">
+                <p className="text-2xl text-gray-600 mb-20 text-center">
                     Let's build something that matters
                 </p>
 

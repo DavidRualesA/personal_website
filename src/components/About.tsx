@@ -14,7 +14,7 @@ const About: React.FC = () => {
                         Moving Countries
                     </h2>
                     <div className="grid md:grid-cols-2 gap-12 items-center">
-                        <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+                        <div className="space-y-6 text-lg text-gray-700 leading-relaxed text-justify">
                             <p className='text-2xl'>
                                 "Where should we go for our honeymoon?"... That was the question my wife and I  asked ourselves. 
                                 We chose Australia, not just for a vacation, but for growth.
@@ -47,10 +47,10 @@ const About: React.FC = () => {
 
                 {/* Profesional Profile */}
                 <div className="mb-20 py-16 bg-gradient-to-r from-blue-50 to-purple-50 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-16 lg:px-16 rounded-3xl">
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8">
                         Who am I?
                     </h2>
-                    <div className="max-w-4xl space-y-6 text-lg text-gray-700 leading-relaxed">
+                    <div className="max-w-4xl space-y-6 text-lg text-gray-700 leading-relaxed text-justify">
                         <p className='text-2xl'> 
                             I'm David Ruales, an engineer passionate about turning ideas into intelligent systems. 
                             I've got about nine years of experience across industries, I've blended my background in engineering, data science, and AI/ML to design solutions.
@@ -66,10 +66,10 @@ const About: React.FC = () => {
 
                 {/* Halo Education - Proudest Work */}
                 <div className="mb-20">
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
                         Building for Future Generations
                     </h2>
-                    <p className="text-2xl text-gray-700 mb-12 max-w-3xl">
+                    <p className="text-2xl text-gray-700 mb-12 max-w-3xl text-justify">
                         <span className="font-bold text-blue-900">Halo Education</span> is my most recent project development. 
                         Halo is an AI-powered analytics platform for Australian schools aim to help teachers, leaders and parents to 
                         improve health and wellbeing of students.
@@ -106,19 +106,19 @@ const About: React.FC = () => {
                     </div>
 
                     <div className="bg-white rounded-2xl p-8 space-y-4">
-                        <h3 className="text-4xl font-bold text-gray-900 mb-4">The Impact</h3>
+                        <h3 className="text-2xl font-bold text-gray-900 mb-4">The Impact</h3>
                         <ul className="space-y-3 text-gray-700">
                             <li className="flex items-start">
-                                <span className="text-blue-600 font-bold mr-3">→</span>
-                                <span className='text-2xl'>ML models developed to identify at-risk students before they fall behind</span>
+                                <span className="text-blue-600 font-bold mr-3 text-xl">→</span>
+                                <span className='text-xl'>ML models developed to identify at-risk students before they fall behind</span>
                             </li>
                             <li className="flex items-start">
-                                <span className="text-blue-600 font-bold mr-3">→</span>
-                                <span className='text-2xl'>AI Assistant that answers plain English questions about student data in seconds</span>
+                                <span className="text-blue-600 font-bold mr-3 text-xl">→</span>
+                                <span className='text-xl'>AI Assistant that answers plain English questions about student data in seconds</span>
                             </li>
                             <li className="flex items-start">
-                                <span className="text-blue-600 font-bold mr-3">→</span>
-                                <span className='text-2xl'>Enabling early intervention for attendance, performance, and wellbeing issues</span>
+                                <span className="text-blue-600 font-bold mr-3 text-xl">→</span>
+                                <span className='text-xl'>Enabling early intervention for attendance, performance, and wellbeing issues</span>
                             </li>
                         </ul>
                     </div>
